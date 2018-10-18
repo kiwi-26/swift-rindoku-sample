@@ -9,7 +9,7 @@
 import Foundation
 
 final class GitHubAPI {
-    struct SearchRepositories: GitHubRequest {        
+    struct SearchRepositories: GitHubRequest {
         let keyword: String
         var body: Encodable?
 
@@ -21,6 +21,25 @@ final class GitHubAPI {
         
         var path: String {
             return "/search/repositories"
+        }
+        
+        var queryItems: [URLQueryItem] {
+            return [URLQueryItem(name: "q", value: keyword)]
+        }
+    }
+    
+    struct SearchUsers: GitHubRequest {
+        let keyword: String
+        var body: Encodable?
+        
+        typealias Response = SearchResponse<User>
+        
+        var method: HTTPMethod {
+            return .get
+        }
+        
+        var path: String {
+            return "/search/users"
         }
         
         var queryItems: [URLQueryItem] {
