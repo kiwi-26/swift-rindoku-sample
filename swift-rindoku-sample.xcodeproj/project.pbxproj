@@ -12,6 +12,7 @@
 		17DFDD6A211E7BF10060A993 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17DFDD69211E7BF10060A993 /* Assets.xcassets */; };
 		17DFDD6D211E7BF10060A993 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17DFDD6B211E7BF10060A993 /* LaunchScreen.storyboard */; };
 		17DFDD75211E7D840060A993 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17DFDD74211E7D840060A993 /* ListViewController.xib */; };
+		9C66A4102181625B00E1A435 /* GitHubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C66A40F2181625B00E1A435 /* GitHubClient.swift */; };
 		9C715FD52178222F00664B26 /* GitHubClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C715FCC2178222F00664B26 /* GitHubClient.framework */; };
 		9C715FDC2178222F00664B26 /* GitHubClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C715FDB2178222F00664B26 /* GitHubClientTests.swift */; };
 		9C715FDE2178222F00664B26 /* GitHubClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C715FCE2178222F00664B26 /* GitHubClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -77,6 +78,7 @@
 		17DFDD6C211E7BF10060A993 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17DFDD6E211E7BF10060A993 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17DFDD74211E7D840060A993 /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
+		9C66A40F2181625B00E1A435 /* GitHubClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubClient.swift; sourceTree = "<group>"; };
 		9C715FCC2178222F00664B26 /* GitHubClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GitHubClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C715FCE2178222F00664B26 /* GitHubClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GitHubClient.h; sourceTree = "<group>"; };
 		9C715FCF2178222F00664B26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				9C715FCE2178222F00664B26 /* GitHubClient.h */,
 				9C715FCF2178222F00664B26 /* Info.plist */,
 				9C715FFB2178273900664B26 /* GitHubAPI.swift */,
+				9C66A40F2181625B00E1A435 /* GitHubClient.swift */,
 			);
 			path = GitHubClient;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				9C715FF3217824B200664B26 /* GitHubAPIError.swift in Sources */,
 				9C715FF02178240600664B26 /* SearchResponse.swift in Sources */,
 				9C715FF82178255500664B26 /* GitHubRequest.swift in Sources */,
+				9C66A4102181625B00E1A435 /* GitHubClient.swift in Sources */,
 				9C715FF5217824BE00664B26 /* GitHubClientError.swift in Sources */,
 				9C715FFC2178273900664B26 /* GitHubAPI.swift in Sources */,
 			);
