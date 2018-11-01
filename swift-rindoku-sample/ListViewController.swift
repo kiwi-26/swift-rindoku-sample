@@ -14,7 +14,13 @@ class ListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     let cellId = "cellId"
     
-    var data: [Repository] = []
+    var data: [Repository] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +38,8 @@ class ListViewController: UIViewController {
             switch result {
             case .success(let response):
                 self.data = response.items
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
             case .failure(_):
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                self.data = []
             }
         }
     }
