@@ -9,11 +9,11 @@
 import Foundation
 
 public struct Repository: Decodable {
-    let id: Int
-    let name: String
-    let fullName: String
-    let owner: User
-    let htmlUrl: String
+    public let id: Int
+    public let name: String
+    public let fullName: String
+    public let owner: User
+    public let htmlUrl: String
     
     enum CodingKeys: String, CodingKey {
         case id

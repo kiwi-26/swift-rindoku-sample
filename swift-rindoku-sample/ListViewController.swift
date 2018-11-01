@@ -14,7 +14,7 @@ class ListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     let cellId = "cellId"
     
-    let data = ["hoge", "fuga", "piyo"]
+    var data: [Repository] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,17 @@ class ListViewController: UIViewController {
         let client = GitHubClient()
         let request = GitHubAPI.SearchRepositories(keyword: "Swift")
         client.send(request: request) { result in
-            
+            switch result {
+            case .success(let response):
+                self.data = response.items
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
         }
     }
     
@@ -45,6 +55,8 @@ class ListViewController: UIViewController {
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailViewController = DetailViewController()
+        detailViewController.title = data[indexPath.row].fullName
+        detailViewController.url = data[indexPath.row].htmlUrl
         navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
@@ -56,7 +68,7 @@ extension ListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RepositoryCell
-        cell.set(repositoryName: data[indexPath.row])
+        cell.set(repositoryName: data[indexPath.row].fullName)
         return cell
     }
 }
