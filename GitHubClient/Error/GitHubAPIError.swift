@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct GitHubAPIError: Decodable, Error {
-    struct FieldError: Decodable {
+public struct GitHubAPIError: Decodable, Error {
+    public struct FieldError: Decodable {
         let resource: String
         let field: String
         let code: String

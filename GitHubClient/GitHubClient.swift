@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Result<T, Error: Swift.Error> {
+public enum Result<T, Error: Swift.Error> {
     case success(T)
     case failure(Error)
     
@@ -21,14 +21,18 @@ enum Result<T, Error: Swift.Error> {
     }
 }
 
-class GitHubClient {
+public class GitHubClient {
+    public init() {
+        
+    }
+    
     private let session: URLSession = {
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration)
         return session
     }()
     
-    func send<Request: GitHubRequest>(request: Request, completion: @escaping (Result<Request.Response, GitHubClientError>) -> Void) {
+    public func send<Request: GitHubRequest>(request: Request, completion: @escaping (Result<Request.Response, GitHubClientError>) -> Void) {
         let urlRequest = request.buildURLRequest()
         let task = session.dataTask(with: urlRequest) { (data, response, error) in
             switch (data, response, error) {

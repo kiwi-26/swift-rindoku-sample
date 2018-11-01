@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum GitHubClientError: Error {
+public enum GitHubClientError: Error {
     case connectionError(Error)
     case responseParseError(Error)
     case apiError(GitHubAPIError)

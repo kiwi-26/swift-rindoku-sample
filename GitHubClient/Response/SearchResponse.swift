@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct SearchResponse<Item: Decodable>: Decodable {
-    let totalCount: Int
-    let items: [Item]
+public struct SearchResponse<Item: Decodable>: Decodable {
+    public let totalCount: Int
+    public let items: [Item]
     
     enum CodingKeys: String, CodingKey {
         case totalCount = "total_count"

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GitHubClient
 
 class ListViewController: UIViewController {
     
@@ -24,6 +25,12 @@ class ListViewController: UIViewController {
         
         let nib = UINib(nibName: "RepositoryCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)
+        
+        let client = GitHubClient()
+        let request = GitHubAPI.SearchRepositories(keyword: "Swift")
+        client.send(request: request) { result in
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -8,41 +8,45 @@
 
 import Foundation
 
-final class GitHubAPI {
-    struct SearchRepositories: GitHubRequest {
-        let keyword: String
-        var body: Encodable?
+public final class GitHubAPI {
+    public struct SearchRepositories: GitHubRequest {
+        public let keyword: String
+        public var body: Encodable?
 
-        typealias Response = SearchResponse<Repository>
+        public typealias Response = SearchResponse<Repository>
         
-        var method: HTTPMethod {
+        public init(keyword: String) {
+            self.keyword = keyword
+        }
+        
+        public var method: HTTPMethod {
             return .get
         }
         
-        var path: String {
+        public var path: String {
             return "/search/repositories"
         }
         
-        var queryItems: [URLQueryItem] {
+        public var queryItems: [URLQueryItem] {
             return [URLQueryItem(name: "q", value: keyword)]
         }
     }
     
-    struct SearchUsers: GitHubRequest {
-        let keyword: String
-        var body: Encodable?
+    public struct SearchUsers: GitHubRequest {
+        public let keyword: String
+        public var body: Encodable?
         
-        typealias Response = SearchResponse<User>
+        public typealias Response = SearchResponse<User>
         
-        var method: HTTPMethod {
+        public var method: HTTPMethod {
             return .get
         }
         
-        var path: String {
+        public var path: String {
             return "/search/users"
         }
         
-        var queryItems: [URLQueryItem] {
+        public var queryItems: [URLQueryItem] {
             return [URLQueryItem(name: "q", value: keyword)]
         }
     }

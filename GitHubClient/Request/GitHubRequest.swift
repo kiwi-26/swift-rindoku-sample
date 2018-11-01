@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol GitHubRequest {
+public protocol GitHubRequest {
     associatedtype Response: Decodable
     
     var baseURL: URL { get }
@@ -19,11 +19,11 @@ protocol GitHubRequest {
 }
 
 extension GitHubRequest {
-    var baseURL: URL {
+    public var baseURL: URL {
         return URL(string: "https://api.github.com")!
     }
     
-    func buildURLRequest() -> URLRequest {
+    public func buildURLRequest() -> URLRequest {
         let url = baseURL.appendingPathComponent(path)
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
         
@@ -41,7 +41,7 @@ extension GitHubRequest {
         return urlRequest
     }
     
-    func response(from data: Data, urlResponse: URLResponse) throws -> Response {
+    public func response(from data: Data, urlResponse: URLResponse) throws -> Response {
         let decoder = JSONDecoder()
         
         guard let statusCode = (urlResponse as? HTTPURLResponse)?.statusCode,
