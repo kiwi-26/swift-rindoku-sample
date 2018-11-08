@@ -55,9 +55,7 @@ class ListViewController: UIViewController {
 
 extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailViewController = DetailViewController()
-        detailViewController.title = data[indexPath.row].fullName
-        detailViewController.url = data[indexPath.row].htmlUrl
+        let detailViewController = DetailViewController(repository: data[indexPath.row])
         navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
