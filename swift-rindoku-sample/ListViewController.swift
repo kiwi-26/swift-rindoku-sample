@@ -56,6 +56,7 @@ class ListViewController: UIViewController {
         searchController.searchBar.placeholder = "キーワードを入力"
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
         
         let nib = UINib(nibName: "RepositoryCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)
