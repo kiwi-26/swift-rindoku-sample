@@ -21,6 +21,26 @@ class ListViewController: UIViewController {
             }
         }
     }
+    
+    var keyword: String = "" {
+        didSet {
+            guard !keyword.isEmpty else {
+                self.data = []
+                return
+            }
+            
+            let client = GitHubClient()
+            let request = GitHubAPI.SearchRepositories(keyword: keyword)
+            client.send(request: request) { [weak self] result in
+                switch result {
+                case .success(let response):
+                    self?.data = response.items
+                case .failure(_):
+                    self?.data = []
+                }
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,19 +49,16 @@ class ListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        // 検索バー
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "キーワードを入力"
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
         let nib = UINib(nibName: "RepositoryCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)
-        
-        let client = GitHubClient()
-        let request = GitHubAPI.SearchRepositories(keyword: "Swift")
-        client.send(request: request) { result in
-            switch result {
-            case .success(let response):
-                self.data = response.items
-            case .failure(_):
-                self.data = []
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,5 +86,17 @@ extension ListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RepositoryCell
         cell.set(repositoryName: data[indexPath.row].fullName)
         return cell
+    }
+}
+
+extension ListViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        keyword = searchBar.text ?? ""
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        keyword = ""
+        searchBar.resignFirstResponder()
     }
 }
