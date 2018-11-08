@@ -60,7 +60,6 @@ class ListViewController: UIViewController {
         // 検索バー設定
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-        definesPresentationContext = true
         
         let nib = UINib(nibName: "RepositoryCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)
@@ -97,11 +96,11 @@ extension ListViewController: UITableViewDataSource {
 extension ListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         keyword = searchBar.text ?? ""
-        searchBar.resignFirstResponder()
+        searchController.dismiss(animated: true, completion: nil)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         keyword = ""
-        searchBar.resignFirstResponder()
+        searchController.dismiss(animated: true, completion: nil)
     }
 }
