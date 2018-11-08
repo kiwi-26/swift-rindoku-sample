@@ -22,6 +22,14 @@ class ListViewController: UIViewController {
         }
     }
     
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "キーワードを入力"
+        return searchController
+    }()
+    
     var keyword: String = "" {
         didSet {
             guard !keyword.isEmpty else {
@@ -49,11 +57,7 @@ class ListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        // 検索バー
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "キーワードを入力"
+        // 検索バー設定
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
