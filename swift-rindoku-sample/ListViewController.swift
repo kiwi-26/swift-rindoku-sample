@@ -59,6 +59,9 @@ class ListViewController: UIViewController {
                 self?.data = response.items
             case .failure(_):
                 self?.data = []
+                let controller = UIAlertController(title: "エラー", message: "エラーが発生しました", preferredStyle: .alert)
+                controller.addAction(UIAlertAction(title: "確認", style: .default, handler: nil))
+                self?.present(controller, animated: true, completion: nil)
             }
         }
     }
