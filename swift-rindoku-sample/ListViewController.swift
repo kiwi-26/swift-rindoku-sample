@@ -18,34 +18,47 @@ class ListViewController: UIViewController {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshingManually(in: self.tableView)
             }
         }
     }
     
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: nil)
-        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = true
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "キーワードを入力"
         return searchController
     }()
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl(frame: CGRect.zero)
+        refreshControl.addTarget(self, action: #selector(ListViewController.search), for: .valueChanged)
+        return refreshControl
+    }()
+    
     var keyword: String = "" {
         didSet {
-            guard !keyword.isEmpty else {
-                self.data = []
-                return
-            }
-            
-            let client = GitHubClient()
-            let request = GitHubAPI.SearchRepositories(keyword: keyword)
-            client.send(request: request) { [weak self] result in
-                switch result {
-                case .success(let response):
-                    self?.data = response.items
-                case .failure(_):
-                    self?.data = []
-                }
+            self.search()
+        }
+    }
+    
+    @objc func search() {
+        guard !keyword.isEmpty else {
+            self.data = []
+            return
+        }
+        
+        let client = GitHubClient()
+        let request = GitHubAPI.SearchRepositories(keyword: keyword)
+        self.refreshControl.beginRefreshingManually(in: self.tableView)
+        
+        client.send(request: request) { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.data = response.items
+            case .failure(_):
+                self?.data = []
             }
         }
     }
@@ -56,10 +69,12 @@ class ListViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundView = refreshControl
         
         // 検索バー設定
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
         
         let nib = UINib(nibName: "RepositoryCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)

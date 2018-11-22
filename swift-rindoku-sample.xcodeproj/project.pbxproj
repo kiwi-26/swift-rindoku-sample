@@ -26,6 +26,7 @@
 		9C715FF82178255500664B26 /* GitHubRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C715FF72178255500664B26 /* GitHubRequest.swift */; };
 		9C715FFA2178261D00664B26 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C715FF92178261D00664B26 /* HTTPMethod.swift */; };
 		9C715FFC2178273900664B26 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C715FFB2178273900664B26 /* GitHubAPI.swift */; };
+		9CDEC7FB219D1156001ED1C9 /* UIRefreshControl+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDEC7FA219D1156001ED1C9 /* UIRefreshControl+extension.swift */; };
 		9CE9DF2A215C7EF8004529DF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE9DF28215C7EF8004529DF /* DetailViewController.swift */; };
 		9CE9DF2B215C7EF8004529DF /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9DF29215C7EF8004529DF /* DetailViewController.xib */; };
 		9CFC7ECC2165B0F1008F67D9 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFC7ECA2165B0F1008F67D9 /* RepositoryCell.swift */; };
@@ -93,6 +94,7 @@
 		9C715FF72178255500664B26 /* GitHubRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRequest.swift; sourceTree = "<group>"; };
 		9C715FF92178261D00664B26 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		9C715FFB2178273900664B26 /* GitHubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
+		9CDEC7FA219D1156001ED1C9 /* UIRefreshControl+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+extension.swift"; sourceTree = "<group>"; };
 		9CE9DF28215C7EF8004529DF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9CE9DF29215C7EF8004529DF /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		9CFC7ECA2165B0F1008F67D9 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		17DFDD61211E7BE40060A993 /* swift-rindoku-sample */ = {
 			isa = PBXGroup;
 			children = (
+				9CDEC7F9219D1140001ED1C9 /* extensions */,
 				17DFDD62211E7BE40060A993 /* AppDelegate.swift */,
 				17DFDD64211E7BE40060A993 /* ListViewController.swift */,
 				9CE9DF28215C7EF8004529DF /* DetailViewController.swift */,
@@ -212,6 +215,14 @@
 				9C715FF92178261D00664B26 /* HTTPMethod.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		9CDEC7F9219D1140001ED1C9 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9CDEC7FA219D1156001ED1C9 /* UIRefreshControl+extension.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,6 +378,7 @@
 				9CE9DF2A215C7EF8004529DF /* DetailViewController.swift in Sources */,
 				17DFDD65211E7BE40060A993 /* ListViewController.swift in Sources */,
 				17DFDD63211E7BE40060A993 /* AppDelegate.swift in Sources */,
+				9CDEC7FB219D1156001ED1C9 /* UIRefreshControl+extension.swift in Sources */,
 				9CFC7ECC2165B0F1008F67D9 /* RepositoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
