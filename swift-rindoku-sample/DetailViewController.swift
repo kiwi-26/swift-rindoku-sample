@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
 
     @IBOutlet private weak var webview: WKWebView!
     @IBOutlet private weak var progressView: UIProgressView!
+    @IBOutlet private weak var progressViewHeightConstraint: NSLayoutConstraint!
     
     private let repository: Repository
     
@@ -43,8 +44,10 @@ class DetailViewController: UIViewController {
             UIApplication.shared.isNetworkActivityIndicatorVisible = self.webview.isLoading
             if webview.isLoading {
                 progressView.setProgress(0.1, animated: true)
+                progressViewHeightConstraint.constant = 2
             }else{
                 progressView.setProgress(0.0, animated: false)
+                progressViewHeightConstraint.constant = 0
             }
         }
     }
