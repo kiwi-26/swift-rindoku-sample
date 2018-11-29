@@ -13,6 +13,8 @@ import GitHubClient
 class DetailViewController: UIViewController {
 
     @IBOutlet private weak var webview: WKWebView!
+    @IBOutlet private weak var progressView: UIProgressView!
+    
     private let repository: Repository
     
     init(repository: Repository) {
@@ -29,6 +31,21 @@ class DetailViewController: UIViewController {
         title = repository.fullName
 
         let url = URL(string: repository.htmlUrl)!
+        webview.addObserver(self, forKeyPath: "loading", options: .new, context: nil)
+        webview.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
         webview.load(URLRequest(url: url))
+    }
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "estimatedProgress"{
+            progressView.setProgress(Float(webview.estimatedProgress), animated: true)
+        }else if keyPath == "loading"{
+            UIApplication.shared.isNetworkActivityIndicatorVisible = self.webview.isLoading
+            if webview.isLoading {
+                progressView.setProgress(0.1, animated: true)
+            }else{
+                progressView.setProgress(0.0, animated: false)
+            }
+        }
     }
 }

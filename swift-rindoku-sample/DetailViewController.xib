@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="swift_rindoku_sample" customModuleProvider="target">
             <connections>
+                <outlet property="progressView" destination="ff9-Ey-gfC" id="iLi-3a-WFC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webview" destination="tpQ-DN-LcJ" id="5jD-Xn-TBk"/>
             </connections>
@@ -21,8 +22,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ff9-Ey-gfC">
+                    <rect key="frame" x="0.0" y="20" width="375" height="2"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="CCS-fk-FU0"/>
+                    </constraints>
+                </progressView>
                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpQ-DN-LcJ">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <rect key="frame" x="0.0" y="22" width="375" height="645"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <wkWebViewConfiguration key="configuration">
                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -33,9 +40,12 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="tpQ-DN-LcJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="3Ja-o6-jBN"/>
+                <constraint firstItem="ff9-Ey-gfC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="IfS-ha-7m7"/>
                 <constraint firstItem="tpQ-DN-LcJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="NdC-9Z-luC"/>
-                <constraint firstItem="tpQ-DN-LcJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="STn-kb-Urb"/>
+                <constraint firstItem="tpQ-DN-LcJ" firstAttribute="top" secondItem="ff9-Ey-gfC" secondAttribute="bottom" id="STn-kb-Urb"/>
                 <constraint firstItem="tpQ-DN-LcJ" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="XjV-Ph-Oqf"/>
+                <constraint firstItem="ff9-Ey-gfC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="cmN-Xv-bKE"/>
+                <constraint firstItem="ff9-Ey-gfC" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="siD-33-tdW"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="138.40000000000001" y="153.37331334332833"/>
