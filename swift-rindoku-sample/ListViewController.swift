@@ -13,6 +13,7 @@ class ListViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     let cellId = "cellId"
+    let keywordSaveKey = "keyword"
     
     var data: [Repository] = [] {
         didSet {
@@ -40,6 +41,10 @@ class ListViewController: UIViewController {
     var keyword: String = "" {
         didSet {
             self.search()
+            UserDefaults.standard.set(keyword, forKey: keywordSaveKey)
+            if searchController.searchBar.text?.isEmpty ?? true {
+                searchController.searchBar.text = keyword
+            }
         }
     }
     
@@ -81,6 +86,10 @@ class ListViewController: UIViewController {
         
         let nib = UINib(nibName: "RepositoryCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)
+        
+        if let lastKeyword = UserDefaults.standard.string(forKey: keywordSaveKey) {
+            keyword = lastKeyword
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
