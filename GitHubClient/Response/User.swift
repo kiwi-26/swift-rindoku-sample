@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import RealmSwift
 
-public struct User: Decodable {
-    let id: Int
-    let login: String
+@objcMembers
+public class User: Object, Decodable {
+    dynamic var id = 0
+    dynamic var login = ""
 }

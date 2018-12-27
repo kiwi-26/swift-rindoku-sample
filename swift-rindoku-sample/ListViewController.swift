@@ -8,12 +8,16 @@
 
 import UIKit
 import GitHubClient
+import RealmSwift
 
 class ListViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     let cellId = "cellId"
-    let keywordSaveKey = "keyword"
+    
+    var realm: Realm = {
+        return try! Realm()
+    }()
     
     var data: [Repository] = [] {
         didSet {
@@ -41,7 +45,14 @@ class ListViewController: UIViewController {
     var keyword: String = "" {
         didSet {
             self.search()
-            UserDefaults.standard.set(keyword, forKey: keywordSaveKey)
+            try! realm.write {
+                if let history = realm.objects(SearchHistory.self).filter("keyword = %@", keyword).first {
+                    history.searchedAt = Date()
+                } else {
+                    realm.add(SearchHistory(keyword: keyword))
+                }
+            }
+            
             if searchController.searchBar.text?.isEmpty ?? true {
                 searchController.searchBar.text = keyword
             }
@@ -87,9 +98,8 @@ class ListViewController: UIViewController {
         let nib = UINib(nibName: "RepositoryCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellId)
         
-        if let lastKeyword = UserDefaults.standard.string(forKey: keywordSaveKey) {
-            keyword = lastKeyword
-        }
+        let history = realm.objects(SearchHistory.self).sorted(byKeyPath: "searchedAt", ascending: false)
+        keyword = history.first?.keyword ?? ""
     }
     
     override func viewWillAppear(_ animated: Bool) {

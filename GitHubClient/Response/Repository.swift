@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import RealmSwift
 
-public struct Repository: Decodable {
-    public let id: Int
-    public let name: String
-    public let fullName: String
-    public let owner: User
-    public let htmlUrl: String
+@objcMembers
+public class Repository: Object, Decodable {
+    public dynamic var id = 0
+    public dynamic var name = ""
+    public dynamic var fullName = ""
+    public dynamic var owner: User? = User()
+    public dynamic var htmlUrl = ""
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -21,5 +23,15 @@ public struct Repository: Decodable {
         case fullName = "full_name"
         case owner
         case htmlUrl = "html_url"
+    }
+    
+    required convenience public init(from decoder: Decoder) throws {
+        self.init()
+        let container = try decoder.container(keyedBy: Repository.CodingKeys.self)
+        id = try container.decode(Int.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        fullName = try container.decode(String.self, forKey: .fullName)
+        owner = try container.decode(User.self, forKey: .owner)
+        htmlUrl = try container.decode(String.self, forKey: .htmlUrl)
     }
 }
