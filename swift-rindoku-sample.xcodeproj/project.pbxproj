@@ -31,6 +31,8 @@
 		9C986C2921C1F9440008FBF5 /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C986C2821C1F9440008FBF5 /* SearchHistory.swift */; };
 		9C986C2A21C1FC590008FBF5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986C2421C1F8FE0008FBF5 /* Realm.framework */; };
 		9C986C2B21C1FC590008FBF5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986C2321C1F8FE0008FBF5 /* RealmSwift.framework */; };
+		9CB2CD0121D46F9A00D1A099 /* SearchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB2CCFF21D46F9A00D1A099 /* SearchHistoryViewController.swift */; };
+		9CB2CD0221D46F9A00D1A099 /* SearchHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB2CD0021D46F9A00D1A099 /* SearchHistoryViewController.xib */; };
 		9CDEC7FB219D1156001ED1C9 /* UIRefreshControl+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDEC7FA219D1156001ED1C9 /* UIRefreshControl+extension.swift */; };
 		9CE9DF2A215C7EF8004529DF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE9DF28215C7EF8004529DF /* DetailViewController.swift */; };
 		9CE9DF2B215C7EF8004529DF /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9DF29215C7EF8004529DF /* DetailViewController.xib */; };
@@ -102,6 +104,8 @@
 		9C986C2321C1F8FE0008FBF5 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		9C986C2421C1F8FE0008FBF5 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		9C986C2821C1F9440008FBF5 /* SearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
+		9CB2CCFF21D46F9A00D1A099 /* SearchHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryViewController.swift; sourceTree = "<group>"; };
+		9CB2CD0021D46F9A00D1A099 /* SearchHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryViewController.xib; sourceTree = "<group>"; };
 		9CDEC7FA219D1156001ED1C9 /* UIRefreshControl+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+extension.swift"; sourceTree = "<group>"; };
 		9CE9DF28215C7EF8004529DF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9CE9DF29215C7EF8004529DF /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 				9CDEC7F9219D1140001ED1C9 /* extensions */,
 				17DFDD62211E7BE40060A993 /* AppDelegate.swift */,
 				17DFDD64211E7BE40060A993 /* ListViewController.swift */,
+				9CB2CCFF21D46F9A00D1A099 /* SearchHistoryViewController.swift */,
+				9CB2CD0021D46F9A00D1A099 /* SearchHistoryViewController.xib */,
 				9CE9DF28215C7EF8004529DF /* DetailViewController.swift */,
 				9CE9DF29215C7EF8004529DF /* DetailViewController.xib */,
 				17DFDD74211E7D840060A993 /* ListViewController.xib */,
@@ -380,6 +386,7 @@
 				17DFDD6D211E7BF10060A993 /* LaunchScreen.storyboard in Resources */,
 				17DFDD6A211E7BF10060A993 /* Assets.xcassets in Resources */,
 				17DFDD75211E7D840060A993 /* ListViewController.xib in Resources */,
+				9CB2CD0221D46F9A00D1A099 /* SearchHistoryViewController.xib in Resources */,
 				9CFC7ECD2165B0F1008F67D9 /* RepositoryCell.xib in Resources */,
 				9CE9DF2B215C7EF8004529DF /* DetailViewController.xib in Resources */,
 			);
@@ -407,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CE9DF2A215C7EF8004529DF /* DetailViewController.swift in Sources */,
+				9CB2CD0121D46F9A00D1A099 /* SearchHistoryViewController.swift in Sources */,
 				17DFDD65211E7BE40060A993 /* ListViewController.swift in Sources */,
 				17DFDD63211E7BE40060A993 /* AppDelegate.swift in Sources */,
 				9CDEC7FB219D1156001ED1C9 /* UIRefreshControl+extension.swift in Sources */,

@@ -28,11 +28,14 @@ class ListViewController: UIViewController {
         }
     }
     
+    private let searchHistoryController = SearchHistoryViewController(style: .plain)
     private lazy var searchController: UISearchController = {
-        let searchController = UISearchController(searchResultsController: nil)
+        let searchController = UISearchController(searchResultsController: searchHistoryController)
         searchController.dimsBackgroundDuringPresentation = true
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "キーワードを入力"
+        searchController.searchResultsUpdater = searchHistoryController
+        searchHistoryController.delegate = self
         return searchController
     }()
     
@@ -45,11 +48,13 @@ class ListViewController: UIViewController {
     var keyword: String = "" {
         didSet {
             self.search()
-            try! realm.write {
-                if let history = realm.objects(SearchHistory.self).filter("keyword = %@", keyword).first {
-                    history.searchedAt = Date()
-                } else {
-                    realm.add(SearchHistory(keyword: keyword))
+            if !keyword.isEmpty {
+                try! realm.write {
+                    if let history = realm.objects(SearchHistory.self).first(where: { $0.keyword == keyword }) {
+                        history.searchedAt = Date()
+                    } else {
+                        realm.add(SearchHistory(keyword: keyword))
+                    }
                 }
             }
             
@@ -99,6 +104,7 @@ class ListViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: cellId)
         
         let history = realm.objects(SearchHistory.self).sorted(byKeyPath: "searchedAt", ascending: false)
+        print(history)
         keyword = history.first?.keyword ?? ""
     }
     
@@ -139,5 +145,11 @@ extension ListViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         keyword = ""
         searchController.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ListViewController: SearchHistoryDelegate {
+    func searchHistoryDidTapped(keyword: String) {
+        searchController.searchBar.text = keyword
     }
 }
