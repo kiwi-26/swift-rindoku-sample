@@ -143,8 +143,9 @@ extension ListViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        keyword = ""
-        searchController.dismiss(animated: true, completion: nil)
+        searchController.dismiss(animated: true, completion: { () in
+            searchBar.text = self.keyword
+        })
     }
 }
 
