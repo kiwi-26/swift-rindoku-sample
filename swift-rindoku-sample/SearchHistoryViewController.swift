@@ -15,6 +15,7 @@ protocol SearchHistoryDelegate {
 
 class SearchHistoryViewController: UITableViewController {
     
+    let cellId = "reuseIdentifier"
     var realm: Realm = {
         return try! Realm()
     }()
@@ -37,7 +38,8 @@ class SearchHistoryViewController: UITableViewController {
         super.viewDidLoad()
 
         clearsSelectionOnViewWillAppear = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        let nib = UINib(nibName: "SearchHistoryCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: cellId)
         histories = realm.objects(SearchHistory.self).sorted(byKeyPath: "searchedAt", ascending: false)
     }
 
@@ -53,9 +55,9 @@ class SearchHistoryViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! SearchHistoryCell
         let item = currentItems[indexPath.row]
-        cell.textLabel?.text = item.keyword
+        cell.set(history: item)
         return cell
     }
     

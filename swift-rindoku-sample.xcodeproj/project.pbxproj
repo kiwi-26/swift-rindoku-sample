@@ -26,6 +26,8 @@
 		9C715FF82178255500664B26 /* GitHubRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C715FF72178255500664B26 /* GitHubRequest.swift */; };
 		9C715FFA2178261D00664B26 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C715FF92178261D00664B26 /* HTTPMethod.swift */; };
 		9C715FFC2178273900664B26 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C715FFB2178273900664B26 /* GitHubAPI.swift */; };
+		9C94E7CF21F01D0D00673EBF /* SearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C94E7CD21F01D0D00673EBF /* SearchHistoryCell.swift */; };
+		9C94E7D021F01D0D00673EBF /* SearchHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C94E7CE21F01D0D00673EBF /* SearchHistoryCell.xib */; };
 		9C986C2521C1F8FE0008FBF5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986C2321C1F8FE0008FBF5 /* RealmSwift.framework */; };
 		9C986C2621C1F8FE0008FBF5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986C2421C1F8FE0008FBF5 /* Realm.framework */; };
 		9C986C2921C1F9440008FBF5 /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C986C2821C1F9440008FBF5 /* SearchHistory.swift */; };
@@ -101,6 +103,8 @@
 		9C715FF72178255500664B26 /* GitHubRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRequest.swift; sourceTree = "<group>"; };
 		9C715FF92178261D00664B26 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		9C715FFB2178273900664B26 /* GitHubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
+		9C94E7CD21F01D0D00673EBF /* SearchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryCell.swift; sourceTree = "<group>"; };
+		9C94E7CE21F01D0D00673EBF /* SearchHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryCell.xib; sourceTree = "<group>"; };
 		9C986C2321C1F8FE0008FBF5 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		9C986C2421C1F8FE0008FBF5 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		9C986C2821C1F9440008FBF5 /* SearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				17DFDD6E211E7BF10060A993 /* Info.plist */,
 				9CFC7ECA2165B0F1008F67D9 /* RepositoryCell.swift */,
 				9CFC7ECB2165B0F1008F67D9 /* RepositoryCell.xib */,
+				9C94E7CD21F01D0D00673EBF /* SearchHistoryCell.swift */,
+				9C94E7CE21F01D0D00673EBF /* SearchHistoryCell.xib */,
 			);
 			path = "swift-rindoku-sample";
 			sourceTree = "<group>";
@@ -383,6 +389,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C94E7D021F01D0D00673EBF /* SearchHistoryCell.xib in Resources */,
 				17DFDD6D211E7BF10060A993 /* LaunchScreen.storyboard in Resources */,
 				17DFDD6A211E7BF10060A993 /* Assets.xcassets in Resources */,
 				17DFDD75211E7D840060A993 /* ListViewController.xib in Resources */,
@@ -415,6 +422,7 @@
 			files = (
 				9CE9DF2A215C7EF8004529DF /* DetailViewController.swift in Sources */,
 				9CB2CD0121D46F9A00D1A099 /* SearchHistoryViewController.swift in Sources */,
+				9C94E7CF21F01D0D00673EBF /* SearchHistoryCell.swift in Sources */,
 				17DFDD65211E7BE40060A993 /* ListViewController.swift in Sources */,
 				17DFDD63211E7BE40060A993 /* AppDelegate.swift in Sources */,
 				9CDEC7FB219D1156001ED1C9 /* UIRefreshControl+extension.swift in Sources */,
