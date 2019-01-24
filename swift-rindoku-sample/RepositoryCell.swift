@@ -11,7 +11,8 @@ import UIKit
 class RepositoryCell: UITableViewCell {
 
     @IBOutlet private weak var label: UILabel!
-    
+    @IBOutlet private weak var bookmarkButton: UIButton!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

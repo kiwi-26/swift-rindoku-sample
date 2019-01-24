@@ -20,23 +20,37 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vc9-J3-taI">
-                        <rect key="frame" x="16" y="11" width="288" height="22"/>
+                        <rect key="frame" x="16" y="11" width="252" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFD-qH-vWV">
+                        <rect key="frame" x="268" y="4" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="FWw-Dc-Q1z"/>
+                            <constraint firstAttribute="width" constant="36" id="VCU-Pc-t3u"/>
+                        </constraints>
+                        <state key="normal" image="round_bookmark_black_24pt"/>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="Vc9-J3-taI" secondAttribute="trailing" id="NbP-iO-rcd"/>
+                    <constraint firstItem="EFD-qH-vWV" firstAttribute="leadingMargin" secondItem="Vc9-J3-taI" secondAttribute="trailing" constant="8" id="NbP-iO-rcd"/>
                     <constraint firstItem="Vc9-J3-taI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="bEk-oV-Wbh"/>
+                    <constraint firstItem="EFD-qH-vWV" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="cjV-TV-OdE"/>
                     <constraint firstItem="Vc9-J3-taI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="hI9-Nm-2N3"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Vc9-J3-taI" secondAttribute="bottom" id="tSt-3I-hBa"/>
+                    <constraint firstItem="EFD-qH-vWV" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xdu-Vy-YYt"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bookmarkButton" destination="EFD-qH-vWV" id="Xh0-Gs-xBs"/>
                 <outlet property="label" destination="Vc9-J3-taI" id="jNb-Ui-hVk"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="round_bookmark_black_24pt" width="24" height="24"/>
+    </resources>
 </document>
