@@ -17,11 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        let tabbarController = UITabBarController()
+        
         let listViewController = ListViewController()
         let navigationController = UINavigationController(rootViewController: listViewController)
+        navigationController.tabBarItem = UITabBarItem(title: "検索", image: UIImage(named: "round_search_black_24pt"), tag: 0)
+        
+        let bookmarkViewController = BookmarkViewController()
+        let bookmarkNavigation = UINavigationController(rootViewController: bookmarkViewController)
+        bookmarkNavigation.tabBarItem = UITabBarItem(title: "お気に入り", image: UIImage(named: "round_bookmarks_black_24pt"), tag: 1)
+
+        tabbarController.setViewControllers([navigationController, bookmarkNavigation], animated: true)
         
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = navigationController
+        window.rootViewController = tabbarController
         self.window = window
         
         window.makeKeyAndVisible()

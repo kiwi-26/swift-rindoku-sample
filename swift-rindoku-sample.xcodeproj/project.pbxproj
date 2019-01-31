@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		17DFDD63211E7BE40060A993 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DFDD62211E7BE40060A993 /* AppDelegate.swift */; };
 		17DFDD65211E7BE40060A993 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DFDD64211E7BE40060A993 /* ListViewController.swift */; };
-		17DFDD6A211E7BF10060A993 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17DFDD69211E7BF10060A993 /* Assets.xcassets */; };
 		17DFDD6D211E7BF10060A993 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17DFDD6B211E7BF10060A993 /* LaunchScreen.storyboard */; };
 		17DFDD75211E7D840060A993 /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17DFDD74211E7D840060A993 /* ListViewController.xib */; };
+		9C3D471C220297B00039C76E /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3D471A220297B00039C76E /* BookmarkViewController.swift */; };
+		9C3D471D220297B00039C76E /* BookmarkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C3D471B220297B00039C76E /* BookmarkViewController.xib */; };
+		9C3D471F22029A780039C76E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C3D471E22029A780039C76E /* Assets.xcassets */; };
 		9C66A4102181625B00E1A435 /* GitHubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C66A40F2181625B00E1A435 /* GitHubClient.swift */; };
 		9C715FD52178222F00664B26 /* GitHubClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C715FCC2178222F00664B26 /* GitHubClient.framework */; };
 		9C715FDC2178222F00664B26 /* GitHubClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C715FDB2178222F00664B26 /* GitHubClientTests.swift */; };
@@ -35,6 +37,7 @@
 		9C986C2B21C1FC590008FBF5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986C2321C1F8FE0008FBF5 /* RealmSwift.framework */; };
 		9CB2CD0121D46F9A00D1A099 /* SearchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB2CCFF21D46F9A00D1A099 /* SearchHistoryViewController.swift */; };
 		9CB2CD0221D46F9A00D1A099 /* SearchHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB2CD0021D46F9A00D1A099 /* SearchHistoryViewController.xib */; };
+		9CD424EC21F95F9700AE0DD8 /* BookmarkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD424EB21F95F9700AE0DD8 /* BookmarkRepository.swift */; };
 		9CDEC7FB219D1156001ED1C9 /* UIRefreshControl+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDEC7FA219D1156001ED1C9 /* UIRefreshControl+extension.swift */; };
 		9CE9DF2A215C7EF8004529DF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE9DF28215C7EF8004529DF /* DetailViewController.swift */; };
 		9CE9DF2B215C7EF8004529DF /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CE9DF29215C7EF8004529DF /* DetailViewController.xib */; };
@@ -84,10 +87,12 @@
 		17DFDD5F211E7BE40060A993 /* swift-rindoku-sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-rindoku-sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17DFDD62211E7BE40060A993 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17DFDD64211E7BE40060A993 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		17DFDD69211E7BF10060A993 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17DFDD6C211E7BF10060A993 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17DFDD6E211E7BF10060A993 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17DFDD74211E7D840060A993 /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
+		9C3D471A220297B00039C76E /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		9C3D471B220297B00039C76E /* BookmarkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarkViewController.xib; sourceTree = "<group>"; };
+		9C3D471E22029A780039C76E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C66A40F2181625B00E1A435 /* GitHubClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubClient.swift; sourceTree = "<group>"; };
 		9C715FCC2178222F00664B26 /* GitHubClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GitHubClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C715FCE2178222F00664B26 /* GitHubClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GitHubClient.h; sourceTree = "<group>"; };
@@ -110,6 +115,7 @@
 		9C986C2821C1F9440008FBF5 /* SearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
 		9CB2CCFF21D46F9A00D1A099 /* SearchHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryViewController.swift; sourceTree = "<group>"; };
 		9CB2CD0021D46F9A00D1A099 /* SearchHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryViewController.xib; sourceTree = "<group>"; };
+		9CD424EB21F95F9700AE0DD8 /* BookmarkRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkRepository.swift; sourceTree = "<group>"; };
 		9CDEC7FA219D1156001ED1C9 /* UIRefreshControl+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+extension.swift"; sourceTree = "<group>"; };
 		9CE9DF28215C7EF8004529DF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9CE9DF29215C7EF8004529DF /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
@@ -175,19 +181,21 @@
 				9C986C2721C1F92B0008FBF5 /* modules */,
 				9CDEC7F9219D1140001ED1C9 /* extensions */,
 				17DFDD62211E7BE40060A993 /* AppDelegate.swift */,
+				9C3D471E22029A780039C76E /* Assets.xcassets */,
 				17DFDD64211E7BE40060A993 /* ListViewController.swift */,
 				9CB2CCFF21D46F9A00D1A099 /* SearchHistoryViewController.swift */,
 				9CB2CD0021D46F9A00D1A099 /* SearchHistoryViewController.xib */,
 				9CE9DF28215C7EF8004529DF /* DetailViewController.swift */,
 				9CE9DF29215C7EF8004529DF /* DetailViewController.xib */,
 				17DFDD74211E7D840060A993 /* ListViewController.xib */,
-				17DFDD69211E7BF10060A993 /* Assets.xcassets */,
 				17DFDD6B211E7BF10060A993 /* LaunchScreen.storyboard */,
 				17DFDD6E211E7BF10060A993 /* Info.plist */,
 				9CFC7ECA2165B0F1008F67D9 /* RepositoryCell.swift */,
 				9CFC7ECB2165B0F1008F67D9 /* RepositoryCell.xib */,
 				9C94E7CD21F01D0D00673EBF /* SearchHistoryCell.swift */,
 				9C94E7CE21F01D0D00673EBF /* SearchHistoryCell.xib */,
+				9C3D471A220297B00039C76E /* BookmarkViewController.swift */,
+				9C3D471B220297B00039C76E /* BookmarkViewController.xib */,
 			);
 			path = "swift-rindoku-sample";
 			sourceTree = "<group>";
@@ -256,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				9C986C2821C1F9440008FBF5 /* SearchHistory.swift */,
+				9CD424EB21F95F9700AE0DD8 /* BookmarkRepository.swift */,
 			);
 			path = modules;
 			sourceTree = "<group>";
@@ -389,12 +398,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C3D471D220297B00039C76E /* BookmarkViewController.xib in Resources */,
 				9C94E7D021F01D0D00673EBF /* SearchHistoryCell.xib in Resources */,
 				17DFDD6D211E7BF10060A993 /* LaunchScreen.storyboard in Resources */,
-				17DFDD6A211E7BF10060A993 /* Assets.xcassets in Resources */,
 				17DFDD75211E7D840060A993 /* ListViewController.xib in Resources */,
 				9CB2CD0221D46F9A00D1A099 /* SearchHistoryViewController.xib in Resources */,
 				9CFC7ECD2165B0F1008F67D9 /* RepositoryCell.xib in Resources */,
+				9C3D471F22029A780039C76E /* Assets.xcassets in Resources */,
 				9CE9DF2B215C7EF8004529DF /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,7 +430,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C3D471C220297B00039C76E /* BookmarkViewController.swift in Sources */,
 				9CE9DF2A215C7EF8004529DF /* DetailViewController.swift in Sources */,
+				9CD424EC21F95F9700AE0DD8 /* BookmarkRepository.swift in Sources */,
 				9CB2CD0121D46F9A00D1A099 /* SearchHistoryViewController.swift in Sources */,
 				9C94E7CF21F01D0D00673EBF /* SearchHistoryCell.swift in Sources */,
 				17DFDD65211E7BE40060A993 /* ListViewController.swift in Sources */,

@@ -10,6 +10,10 @@ import UIKit
 import GitHubClient
 import RealmSwift
 
+protocol RepositoryCellDelegate {
+    func bookmarkButtonDidTap(repositoryId: Int)
+}
+
 class ListViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -27,6 +31,10 @@ class ListViewController: UIViewController {
             }
         }
     }
+    
+    lazy var bookmarks: Results<BookmarkRepository> = {
+        return realm.objects(BookmarkRepository.self)
+    }()
     
     private let searchHistoryController = SearchHistoryViewController(style: .plain)
     private lazy var searchController: UISearchController = {
@@ -104,7 +112,6 @@ class ListViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: cellId)
         
         let history = realm.objects(SearchHistory.self).sorted(byKeyPath: "searchedAt", ascending: false)
-        print(history)
         keyword = history.first?.keyword ?? ""
     }
     
@@ -131,7 +138,10 @@ extension ListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! RepositoryCell
-        cell.set(repositoryName: data[indexPath.row].fullName)
+        let repository = data[indexPath.row]
+        cell.delegate = self
+        cell.set(repository: repository)
+        cell.setBookmarkButton(bookmarked: bookmarks.contains(where: { $0.repository?.id ?? 0 == repository.id }))
         return cell
     }
 }
@@ -152,5 +162,20 @@ extension ListViewController: UISearchBarDelegate {
 extension ListViewController: SearchHistoryDelegate {
     func searchHistoryDidTapped(keyword: String) {
         searchController.searchBar.text = keyword
+    }
+}
+
+extension ListViewController: RepositoryCellDelegate {
+    func bookmarkButtonDidTap(repositoryId: Int) {
+        if let repository = data.first(where: { $0.id == repositoryId }) {
+            try! realm.write {
+                if let bookmark = realm.objects(BookmarkRepository.self).first(where: { $0.repository?.id ?? 0 == repositoryId }) {
+                    realm.delete(bookmark)
+                } else {
+                    realm.add(BookmarkRepository(repository: repository))
+                }
+            }
+            tableView.reloadData()
+        }
     }
 }
