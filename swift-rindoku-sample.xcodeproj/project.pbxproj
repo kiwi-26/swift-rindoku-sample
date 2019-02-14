@@ -178,24 +178,24 @@
 		17DFDD61211E7BE40060A993 /* swift-rindoku-sample */ = {
 			isa = PBXGroup;
 			children = (
-				9C986C2721C1F92B0008FBF5 /* modules */,
-				9CDEC7F9219D1140001ED1C9 /* extensions */,
+				17DFDD6E211E7BF10060A993 /* Info.plist */,
 				17DFDD62211E7BE40060A993 /* AppDelegate.swift */,
-				9C3D471E22029A780039C76E /* Assets.xcassets */,
-				17DFDD64211E7BE40060A993 /* ListViewController.swift */,
-				9CB2CCFF21D46F9A00D1A099 /* SearchHistoryViewController.swift */,
-				9CB2CD0021D46F9A00D1A099 /* SearchHistoryViewController.xib */,
+				9C3D471A220297B00039C76E /* BookmarkViewController.swift */,
 				9CE9DF28215C7EF8004529DF /* DetailViewController.swift */,
+				17DFDD64211E7BE40060A993 /* ListViewController.swift */,
+				9CFC7ECA2165B0F1008F67D9 /* RepositoryCell.swift */,
+				9C94E7CD21F01D0D00673EBF /* SearchHistoryCell.swift */,
+				9CB2CCFF21D46F9A00D1A099 /* SearchHistoryViewController.swift */,
+				9C3D471E22029A780039C76E /* Assets.xcassets */,
+				9C3D471B220297B00039C76E /* BookmarkViewController.xib */,
 				9CE9DF29215C7EF8004529DF /* DetailViewController.xib */,
 				17DFDD74211E7D840060A993 /* ListViewController.xib */,
-				17DFDD6B211E7BF10060A993 /* LaunchScreen.storyboard */,
-				17DFDD6E211E7BF10060A993 /* Info.plist */,
-				9CFC7ECA2165B0F1008F67D9 /* RepositoryCell.swift */,
 				9CFC7ECB2165B0F1008F67D9 /* RepositoryCell.xib */,
-				9C94E7CD21F01D0D00673EBF /* SearchHistoryCell.swift */,
 				9C94E7CE21F01D0D00673EBF /* SearchHistoryCell.xib */,
-				9C3D471A220297B00039C76E /* BookmarkViewController.swift */,
-				9C3D471B220297B00039C76E /* BookmarkViewController.xib */,
+				9CB2CD0021D46F9A00D1A099 /* SearchHistoryViewController.xib */,
+				9CDEC7F9219D1140001ED1C9 /* extensions */,
+				17DFDD6B211E7BF10060A993 /* LaunchScreen.storyboard */,
+				9C986C2721C1F92B0008FBF5 /* modules */,
 			);
 			path = "swift-rindoku-sample";
 			sourceTree = "<group>";
