@@ -19,9 +19,18 @@ class BookmarkViewController: UIViewController {
         return try! Realm()
     }()
     
+    var notificationToken: NotificationToken? = nil
     lazy var bookmarks: Results<BookmarkRepository> = {
-        return realm.objects(BookmarkRepository.self)
+        let results = realm.objects(BookmarkRepository.self)
+        notificationToken = results.observe({ [weak self] (changes: RealmCollectionChange<Results<BookmarkRepository>>) in
+            self?.tableView.reloadData()
+        })
+        return results
     }()
+    
+    deinit {
+        notificationToken?.invalidate()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +84,6 @@ extension BookmarkViewController: RepositoryCellDelegate {
                 realm.delete(bookmark)
             }
         }
-        //        tableView.reloadData()
+        tableView.reloadData()
     }
 }
