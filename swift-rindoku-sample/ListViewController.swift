@@ -32,8 +32,13 @@ class ListViewController: UIViewController {
         }
     }
     
+    var notificationToken: NotificationToken? = nil
     lazy var bookmarks: Results<BookmarkRepository> = {
-        return realm.objects(BookmarkRepository.self)
+        let results = realm.objects(BookmarkRepository.self)
+        notificationToken = results.observe({ [weak self] (changes: RealmCollectionChange<Results<BookmarkRepository>>) in
+            self?.tableView.reloadData()
+        })
+        return results
     }()
     
     private let searchHistoryController = SearchHistoryViewController(style: .plain)
@@ -121,6 +126,10 @@ class ListViewController: UIViewController {
         if let indexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: indexPath, animated: true)
         }
+    }
+    
+    deinit {
+        notificationToken?.invalidate()
     }
 }
 
