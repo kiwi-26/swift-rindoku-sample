@@ -1,3 +1,58 @@
+3.13.1 Release notes (2019-01-03)
+=============================================================
+
+### Fixed
+
+* Fix a crash when iterating over `Realm.subscriptions()` using for-in.
+  (Since 3.13.0, PR [#6050](https://github.com/realm/realm-cocoa/pull/6050)).
+
+### Compatibility
+
+* File format: Generates Realms with format v9 (Reads and upgrades all previous formats)
+* Realm Object Server: 3.11.0 or later.
+
+3.13.0 Release notes (2018-12-14)
+=============================================================
+
+### Enhancements
+
+* Add `Realm.subscriptions()`/`-[RLMRealm subscriptions]` and
+  `Realm.subscription(named:)`/`-[RLMRealm subscriptionWithName:]` to enable
+  looking up existing query-based sync subscriptions.
+  (PR: https://github.com/realm/realm-cocoa/pull/6029).
+
+### Compatibility
+
+* File format: Generates Realms with format v9 (Reads and upgrades all previous formats)
+* Realm Object Server: 3.11.0 or later.
+
+3.12.0 Release notes (2018-11-26)
+=============================================================
+
+### Enhancements
+
+* Add a User-Agent header to HTTP requests made to the Realm Object Server. By
+  default, this contains information about the Realm library version and your
+  app's bundle ID. The application identifier can be customized by setting
+  `RLMSyncManager.sharedManager.userAgent`/`SyncManager.shared.userAgent` prior
+  to opening a synchronized Realm.
+  (PR: https://github.com/realm/realm-cocoa/pull/6007).
+* Add Xcode 10.1 binary to the prebuilt package.
+
+### Fixed
+
+* None.
+
+### Compatibility
+
+* File format: Generates Realms with format v9 (Reads and upgrades all previous formats)
+* Realm Object Server: 3.11.0 or later.
+
+### Internal
+
+* None.
+
+
 3.11.2 Release notes (2018-11-15)
 =============================================================
 
@@ -24,8 +79,17 @@
 * File format: Generates Realms with format v9 (Reads and upgrades all previous formats)
 * Realm Object Server: 3.11.0 or later.
 
+### Internal
+
+* None.
+
+
 3.11.1 Release notes (2018-10-19)
 =============================================================
+
+### Enhancements
+
+* None.
 
 ### Fixed
 
@@ -41,6 +105,11 @@
 
 * File format: Generates Realms with format v9 (Reads and upgrades all previous formats)
 * Realm Object Server: 3.11.0 or later.
+
+### Internal
+
+* None.
+
 
 3.11.0 Release notes (2018-10-04)
 =============================================================
@@ -70,6 +139,7 @@
 
 ### Internal
 * Update to Sync 3.12.2.
+
 
 3.10.0 Release notes (2018-09-19)
 =============================================================

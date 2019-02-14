@@ -14,6 +14,9 @@
 		9C3D471C220297B00039C76E /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3D471A220297B00039C76E /* BookmarkViewController.swift */; };
 		9C3D471D220297B00039C76E /* BookmarkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C3D471B220297B00039C76E /* BookmarkViewController.xib */; };
 		9C3D471F22029A780039C76E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C3D471E22029A780039C76E /* Assets.xcassets */; };
+		9C5DF9462215084600B6C8D7 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986C2421C1F8FE0008FBF5 /* Realm.framework */; };
+		9C5DF9472215084600B6C8D7 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986C2421C1F8FE0008FBF5 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9C5DF9492215084600B6C8D7 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986C2321C1F8FE0008FBF5 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9C66A4102181625B00E1A435 /* GitHubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C66A40F2181625B00E1A435 /* GitHubClient.swift */; };
 		9C715FD52178222F00664B26 /* GitHubClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C715FCC2178222F00664B26 /* GitHubClient.framework */; };
 		9C715FDC2178222F00664B26 /* GitHubClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C715FDB2178222F00664B26 /* GitHubClientTests.swift */; };
@@ -31,10 +34,7 @@
 		9C94E7CF21F01D0D00673EBF /* SearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C94E7CD21F01D0D00673EBF /* SearchHistoryCell.swift */; };
 		9C94E7D021F01D0D00673EBF /* SearchHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C94E7CE21F01D0D00673EBF /* SearchHistoryCell.xib */; };
 		9C986C2521C1F8FE0008FBF5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986C2321C1F8FE0008FBF5 /* RealmSwift.framework */; };
-		9C986C2621C1F8FE0008FBF5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986C2421C1F8FE0008FBF5 /* Realm.framework */; };
 		9C986C2921C1F9440008FBF5 /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C986C2821C1F9440008FBF5 /* SearchHistory.swift */; };
-		9C986C2A21C1FC590008FBF5 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986C2421C1F8FE0008FBF5 /* Realm.framework */; };
-		9C986C2B21C1FC590008FBF5 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986C2321C1F8FE0008FBF5 /* RealmSwift.framework */; };
 		9CB2CD0121D46F9A00D1A099 /* SearchHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB2CCFF21D46F9A00D1A099 /* SearchHistoryViewController.swift */; };
 		9CB2CD0221D46F9A00D1A099 /* SearchHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9CB2CD0021D46F9A00D1A099 /* SearchHistoryViewController.xib */; };
 		9CD424EC21F95F9700AE0DD8 /* BookmarkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD424EB21F95F9700AE0DD8 /* BookmarkRepository.swift */; };
@@ -76,7 +76,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				9C5DF9472215084600B6C8D7 /* Realm.framework in Embed Frameworks */,
 				9C715FE22178222F00664B26 /* GitHubClient.framework in Embed Frameworks */,
+				9C5DF9492215084600B6C8D7 /* RealmSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,8 +130,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C5DF9462215084600B6C8D7 /* Realm.framework in Frameworks */,
 				9C986C2521C1F8FE0008FBF5 /* RealmSwift.framework in Frameworks */,
-				9C986C2621C1F8FE0008FBF5 /* Realm.framework in Frameworks */,
 				9C715FE12178222F00664B26 /* GitHubClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,8 +140,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C986C2A21C1FC590008FBF5 /* Realm.framework in Frameworks */,
-				9C986C2B21C1FC590008FBF5 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +617,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -628,6 +629,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hicka04.swift-rindoku-sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -638,6 +640,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -649,6 +652,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hicka04.swift-rindoku-sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -658,7 +662,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
