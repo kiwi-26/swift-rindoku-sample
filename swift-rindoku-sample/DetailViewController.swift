@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import RealmSwift
 import GitHubClient
 
 class DetailViewController: UIViewController {
@@ -17,6 +18,10 @@ class DetailViewController: UIViewController {
     @IBOutlet private weak var progressViewHeightConstraint: NSLayoutConstraint!
     
     private let repository: Repository
+    
+    var realm: Realm = {
+        return try! Realm()
+    }()
     
     init(repository: Repository) {
         self.repository = repository
@@ -31,10 +36,34 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         title = repository.fullName
 
+        if realm.objects(BookmarkRepository.self).first(where: { (repo) -> Bool in
+            return repo.repository?.id == self.repository.id
+        }) != nil {
+            let bookmarkButton = UIBarButtonItem(image: UIImage(named: "round_bookmark_black_24pt"), style: .plain, target: self, action: #selector(bookmarkButtonDidTapped))
+            navigationItem.rightBarButtonItem = bookmarkButton
+        } else {
+            let bookmarkButton = UIBarButtonItem(image: UIImage(named: "round_bookmark_border_black_24pt"), style: .plain, target: self, action: #selector(bookmarkButtonDidTapped))
+            navigationItem.rightBarButtonItem = bookmarkButton
+        }
+        
         let url = URL(string: repository.htmlUrl)!
         webview.addObserver(self, forKeyPath: "loading", options: .new, context: nil)
         webview.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
         webview.load(URLRequest(url: url))
+    }
+    
+    @objc func bookmarkButtonDidTapped () {
+        try! realm.write {
+            if let bookmark = realm.objects(BookmarkRepository.self).first(where: { $0.repository?.id == self.repository.id }) {
+                realm.delete(bookmark)
+                let bookmarkButton = UIBarButtonItem(image: UIImage(named: "round_bookmark_border_black_24pt"), style: .plain, target: self, action: #selector(bookmarkButtonDidTapped))
+                navigationItem.rightBarButtonItem = bookmarkButton
+            } else {
+                realm.add(BookmarkRepository(repository: self.repository))
+                let bookmarkButton = UIBarButtonItem(image: UIImage(named: "round_bookmark_black_24pt"), style: .plain, target: self, action: #selector(bookmarkButtonDidTapped))
+                navigationItem.rightBarButtonItem = bookmarkButton
+            }
+        }
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
