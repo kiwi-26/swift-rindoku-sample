@@ -181,6 +181,13 @@ extension ListViewController: RepositoryCellDelegate {
                 if let bookmark = realm.objects(BookmarkRepository.self).first(where: { $0.repository?.id ?? 0 == repositoryId }) {
                     realm.delete(bookmark)
                 } else {
+                    guard realm.objects(BookmarkRepository.self).count < 50 else {
+                        let alert = UIAlertController(title: "お気に入りがいっぱいです", message: "お気に入りの保存は50件までです", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        present(alert, animated: true, completion: nil)
+                        return
+                    }
+
                     realm.add(BookmarkRepository(repository: repository))
                 }
             }
