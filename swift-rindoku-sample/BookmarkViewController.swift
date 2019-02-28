@@ -72,6 +72,7 @@ extension BookmarkViewController: UITableViewDataSource {
         if let repository = bookmarks[indexPath.row].repository {
             cell.set(repository: repository)
             cell.setBookmarkButton(bookmarked: bookmarks.contains(where: { $0.repository?.id ?? 0 == repository.id }))
+            cell.tag = repository.id
         }
         return cell
     }
@@ -82,8 +83,14 @@ extension BookmarkViewController: RepositoryCellDelegate {
         try! realm.write {
             if let bookmark = realm.objects(BookmarkRepository.self).first(where: { $0.repository?.id ?? 0 == repositoryId }) {
                 realm.delete(bookmark)
+
+                if let deleteCell = tableView.visibleCells.first(where: { return $0.tag == repositoryId }),
+                    let indexPath = tableView.indexPath(for: deleteCell) {
+                    tableView.beginUpdates()
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                    tableView.endUpdates()
+                }
             }
         }
-        tableView.reloadData()
     }
 }

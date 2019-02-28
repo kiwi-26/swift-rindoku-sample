@@ -23,6 +23,17 @@ class DetailViewController: UIViewController {
         return try! Realm()
     }()
     
+    var isBookmarked: Bool {
+        return realm.objects(BookmarkRepository.self).first(where: { (repo) -> Bool in
+            return repo.repository?.id == self.repository.id
+        }) != nil
+    }
+    
+    var notificationToken: NotificationToken? = nil
+    deinit {
+        notificationToken?.invalidate()
+    }
+    
     init(repository: Repository) {
         self.repository = repository
         super.init(nibName: nil, bundle: nil)
@@ -36,14 +47,14 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         title = repository.fullName
 
-        if realm.objects(BookmarkRepository.self).first(where: { (repo) -> Bool in
-            return repo.repository?.id == self.repository.id
-        }) != nil {
-            let bookmarkButton = UIBarButtonItem(image: UIImage(named: "round_bookmark_black_24pt"), style: .plain, target: self, action: #selector(bookmarkButtonDidTapped))
-            navigationItem.rightBarButtonItem = bookmarkButton
-        } else {
-            let bookmarkButton = UIBarButtonItem(image: UIImage(named: "round_bookmark_border_black_24pt"), style: .plain, target: self, action: #selector(bookmarkButtonDidTapped))
-            navigationItem.rightBarButtonItem = bookmarkButton
+        notificationToken = realm.objects(BookmarkRepository.self).filter("repository.id = %d", repository.id).observe { (change) in
+            switch change {
+            case .initial(_), .update(_, _, _, _):
+                let bookmarkButton = UIBarButtonItem(image: self.isBookmarked ? #imageLiteral(resourceName: "round_bookmark_black_24pt") : #imageLiteral(resourceName: "round_bookmark_border_black_24pt"), style: .plain, target: self, action: #selector(self.bookmarkButtonDidTapped))
+                self.navigationItem.rightBarButtonItem = bookmarkButton
+            default:
+                break
+            }
         }
         
         let url = URL(string: repository.htmlUrl)!
@@ -56,8 +67,6 @@ class DetailViewController: UIViewController {
         try! realm.write {
             if let bookmark = realm.objects(BookmarkRepository.self).first(where: { $0.repository?.id == self.repository.id }) {
                 realm.delete(bookmark)
-                let bookmarkButton = UIBarButtonItem(image: UIImage(named: "round_bookmark_border_black_24pt"), style: .plain, target: self, action: #selector(bookmarkButtonDidTapped))
-                navigationItem.rightBarButtonItem = bookmarkButton
             } else {
                 guard realm.objects(BookmarkRepository.self).count < 50 else {
                     let alert = UIAlertController(title: "お気に入りがいっぱいです", message: "お気に入りの保存は50件までです", preferredStyle: .alert)
@@ -66,8 +75,6 @@ class DetailViewController: UIViewController {
                     return
                 }
                 realm.add(BookmarkRepository(repository: self.repository))
-                let bookmarkButton = UIBarButtonItem(image: UIImage(named: "round_bookmark_black_24pt"), style: .plain, target: self, action: #selector(bookmarkButtonDidTapped))
-                navigationItem.rightBarButtonItem = bookmarkButton
             }
         }
     }
